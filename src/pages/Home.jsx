@@ -5,6 +5,7 @@ import { objects } from '../data/objects';
 import { categories } from '../data/categories';
 import ObjectCard from '../components/ObjectCard';
 import CategoryCard from '../components/CategoryCard';
+import CreatorSection from '../components/CreatorSection';
 
 const Home = () => {
   // Get featured categories (top 6 requested)
@@ -159,6 +160,11 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* 5. ABOUT THE DEVELOPER / CREATOR */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <CreatorSection />
+      </div>
 
     </div>
   );

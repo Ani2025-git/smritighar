@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Landmark, Shield, GraduationCap, Sparkles, Scroll, ArrowRight, Heart } from 'lucide-react';
+import CreatorSection from '../components/CreatorSection';
 
 const About = () => {
   return (
@@ -93,6 +94,10 @@ const About = () => {
 
         </div>
       </section>
+
+      {/* MEET THE DEVELOPER / ABOUT US */}
+      <CreatorSection />
+
 
       {/* EXPLORE CTA */}
       <section className="bg-parchment-pattern text-ink-dark rounded-3xl p-8 sm:p-12 border-2 border-amber-gold shadow-museum text-center space-y-6">
