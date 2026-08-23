@@ -29,34 +29,34 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-museum-950/90 backdrop-blur-md border-b border-amber-gold/20 shadow-museum transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+      <header className="sticky top-0 z-40 bg-museum-950/95 backdrop-blur-md border-b border-amber-gold/20 shadow-museum transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+          <div className="flex items-center justify-between h-20 gap-2">
             
             {/* LOGO */}
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-12 h-12 rounded-lg bg-wood-dark border border-amber-gold/40 flex items-center justify-center shadow-gold-glow group-hover:border-amber-gold transition-colors">
-                <Landmark className="w-6 h-6 text-amber-gold group-hover:scale-110 transition-transform duration-300" />
+            <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-wood-dark border border-amber-gold/40 flex items-center justify-center shadow-gold-glow group-hover:border-amber-gold transition-colors">
+                <Landmark className="w-5 h-5 sm:w-6 sm:h-6 text-amber-gold group-hover:scale-110 transition-transform duration-300" />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-2xl font-bold tracking-wide text-cream group-hover:text-amber-goldLight transition-colors">
+                <span className="font-serif text-xl sm:text-2xl font-bold tracking-wide text-cream group-hover:text-amber-goldLight transition-colors leading-tight">
                   SmritiGhar
                 </span>
-                <span className="text-[11px] font-sans tracking-widest text-parchment-dark uppercase">
+                <span className="text-[9px] sm:text-[11px] font-sans tracking-widest text-parchment-dark uppercase hidden sm:block">
                   {t('footer.tagline')}
                 </span>
               </div>
             </Link>
 
-            {/* DESKTOP NAV LINKS */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+            {/* DESKTOP NAV LINKS (VISIBLE ON XL / LG) */}
+            <nav className="hidden xl:flex items-center gap-1">
               {navLinks.map((link) => {
                 const active = isActive(link.path);
                 return (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`px-3.5 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                    className={`px-2.5 py-1.5 rounded-md text-xs xl:text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                       active
                         ? 'text-amber-gold bg-wood-dark/70 border border-amber-gold/30 shadow-inner'
                         : 'text-cream/80 hover:text-amber-goldLight hover:bg-wood-dark/40'
@@ -69,50 +69,44 @@ const Navbar = () => {
             </nav>
 
             {/* RIGHT ACTION BUTTONS */}
-            <div className="hidden lg:flex items-center gap-3">
-              {/* LANGUAGE SWITCHER */}
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+              
+              {/* LANGUAGE SWITCHER (ALWAYS VISIBLE) */}
               <LanguageSwitcher />
 
+              {/* SEARCH BUTTON */}
               <button
                 onClick={() => setIsSearchOpen(true)}
-                className="p-2.5 rounded-lg bg-wood-dark/60 text-parchment hover:text-amber-gold border border-amber-gold/20 hover:border-amber-gold/50 transition-all cursor-pointer"
+                className="p-2 sm:p-2.5 rounded-lg bg-wood-dark/60 text-parchment hover:text-amber-gold border border-amber-gold/20 hover:border-amber-gold/50 transition-all cursor-pointer"
                 title="Search Museum Archives"
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
 
+              {/* CTA EXPLORE BUTTON */}
               <Link
                 to="/explore"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-amber-goldDark via-amber-gold to-amber-goldLight text-museum-950 font-semibold text-sm shadow-gold-glow hover:opacity-95 transition-opacity"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 sm:py-2.5 rounded-lg bg-gradient-to-r from-amber-goldDark via-amber-gold to-amber-goldLight text-museum-950 font-semibold text-xs sm:text-sm shadow-gold-glow hover:opacity-95 transition-opacity"
               >
                 <Sparkles className="w-4 h-4 text-museum-950" />
-                <span>{t('nav.exploreMuseum')}</span>
+                <span className="hidden md:inline">{t('nav.exploreMuseum')}</span>
               </Link>
-            </div>
 
-            {/* MOBILE MENU TOGGLE */}
-            <div className="flex lg:hidden items-center gap-2">
-              <LanguageSwitcher />
-
-              <button
-                onClick={() => setIsSearchOpen(true)}
-                className="p-2 rounded-lg bg-wood-dark/60 text-parchment hover:text-amber-gold border border-amber-gold/20"
-              >
-                <Search className="w-5 h-5" />
-              </button>
+              {/* MOBILE MENU TOGGLE BUTTON (VISIBLE BELOW XL) */}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2.5 rounded-lg bg-wood-dark text-parchment border border-amber-gold/30 hover:text-amber-gold"
+                className="xl:hidden p-2 rounded-lg bg-wood-dark text-parchment border border-amber-gold/30 hover:text-amber-gold cursor-pointer ml-1"
               >
-                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
+
             </div>
           </div>
         </div>
 
-        {/* MOBILE DRAWER */}
+        {/* MOBILE & TABLET DRAWER (VISIBLE BELOW XL) */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-museum-900 border-b border-amber-gold/30 px-4 pt-2 pb-6 space-y-2 animate-fadeIn">
+          <div className="xl:hidden bg-museum-900 border-b border-amber-gold/30 px-4 pt-2 pb-6 space-y-2 animate-fadeIn">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
