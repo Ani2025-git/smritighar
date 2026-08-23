@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #17110C;
+    color: #F4E8D0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: 'Cormorant Garamond', 'Playfair Display', serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #17110C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3A2618;
+  border: 1px solid #C99A5A40;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C99A5A;
+}
+
+/* Texture & Overlay Classes */
+.bg-museum-pattern {
+  background-color: #17110C;
+  background-image: 
+    radial-gradient(rgba(201, 154, 90, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(23, 17, 12, 0.7), rgba(23, 17, 12, 0.98));
+  background-size: 24px 24px, 100% 100%;
+}
+
+.bg-parchment-pattern {
+  background-color: #E8D3AD;
+  background-image: radial-gradient(rgba(58, 38, 24, 0.08) 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+.museum-gold-gradient {
+  background: linear-gradient(135deg, #E5BF85 0%, #C99A5A 50%, #9E7438 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+  border: 1px solid rgba(201, 154, 90, 0.3);
+  transition: all 0.3s ease;
+}
+
+.gold-border-glow:hover {
+  border-color: rgba(201, 154, 90, 0.8);
+  box-shadow: 0 0 20px rgba(201, 154, 90, 0.25);
+}
+
+/* Sepia image effect */
+.sepia-hover {
+  filter: sepia(35%) contrast(105%);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.sepia-hover:hover {
+  filter: sepia(0%) contrast(100%);
+  transform: scale(1.03);
+}
+
+/* Animated Spotlight Glow */
+@keyframes pulse-spotlight {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-spotlight {
+  animation: pulse-spotlight 6s ease-in-out infinite;
+}

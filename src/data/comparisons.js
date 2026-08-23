@@ -1,0 +1,110 @@
+export const comparisons = [
+  {
+    id: 1,
+    oldName: "Mechanical Typewriter",
+    newName: "Modern Laptop",
+    oldImage: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80",
+    newImage: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80",
+    category: "Education & Office",
+    oldDescription: "Heavy mechanical metal key levers that struck an ink ribbon directly onto physical paper sheets.",
+    newDescription: "Lightweight electronic computer with back-lit key switches, cloud word processing, auto-correct, and infinite storage.",
+    whatChanged: "Physical ink stamping on paper evolved into digital pixel rendering with instant cut, copy, paste, and cloud collaboration.",
+    whyBetter: "Instant error correction without liquid whiteout tape, wireless cloud synchronization, font styling, and multi-language spellcheck."
+  },
+  {
+    id: 2,
+    oldName: "Rotary Telephone",
+    newName: "Smartphone",
+    oldImage: "https://images.unsplash.com/photo-1520923642038-b4259acecbd7?auto=format&fit=crop&w=800&q=80",
+    newImage: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80",
+    category: "Communication",
+    oldDescription: "Stationary copper-wired landline device using a rotating mechanical finger wheel for voice-only calls.",
+    newDescription: "Pocket supercomputer with high-definition touchscreen, video calls, internet access, cameras, and instant messaging.",
+    whatChanged: "Fixed location copper-wire voice calling evolved into wireless high-speed data streaming and video communication.",
+    whyBetter: "Portability, instant HD video calls, instant messaging, global GPS navigation, and pocket access to world knowledge."
+  },
+  {
+    id: 3,
+    oldName: "Acoustic Gramophone",
+    newName: "Music Streaming Apps",
+    oldImage: "https://images.unsplash.com/photo-1546707012-0c9f63bcd297?auto=format&fit=crop&w=800&q=80",
+    newImage: "https://images.unsplash.com/photo-1614680376593-902f749f7edc?auto=format&fit=crop&w=800&q=80",
+    category: "Entertainment",
+    oldDescription: "Hand-cranked mechanical player with a steel needle riding shellac grooves, amplified by a brass horn.",
+    newDescription: "Digital cloud streaming applications holding over 100 million songs available instantly on any connected device.",
+    whatChanged: "Fragile 3-minute physical shellac discs evolved into limitless cloud audio streams with intelligent AI recommendations.",
+    whyBetter: "Zero physical storage clutter, instant access to global discographies, noise cancellation, and high-fidelity stereo sound."
+  },
+  {
+    id: 4,
+    oldName: "35mm Film Camera",
+    newName: "Smartphone Camera",
+    oldImage: "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80",
+    newImage: "https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=800&q=80",
+    category: "Photography",
+    oldDescription: "Analog camera holding 24 or 36-exposure light-sensitive chemical film rolls requiring lab development.",
+    newDescription: "Multi-lens digital optical sensor with computational photography, instant preview, and 4K video recording.",
+    whatChanged: "Chemical darkroom processing of 24 photos evolved into taking thousands of zero-cost digital photos with live previews.",
+    whyBetter: "Instant visual preview, zero ongoing film/development costs, portrait mode blur, night sight photography, and cloud sharing."
+  },
+  {
+    id: 5,
+    oldName: "Postcard & Inland Letter",
+    newName: "Email & Instant Messaging",
+    oldImage: "https://images.unsplash.com/photo-1579273166152-d725a4e2b755?auto=format&fit=crop&w=800&q=80",
+    newImage: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=800&q=80",
+    category: "Communication",
+    oldDescription: "Hand-written paper letter stamped and carried by postal trucks and postmen over 3 to 14 days.",
+    newDescription: "Digital electronic mail and instant chat delivered across the planet in milliseconds.",
+    whatChanged: "Physical paper transport taking weeks evolved into instant digital packet transmission with read receipts.",
+    whyBetter: "Millisecond global delivery speed, zero postal stamp costs, ability to attach large photos and PDF documents."
+  },
+  {
+    id: 6,
+    oldName: "Cassette Player & Walkman",
+    newName: "Spotify & Wireless Earbuds",
+    oldImage: "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
+    newImage: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=800&q=80",
+    category: "Entertainment",
+    oldDescription: "Portable player spinning plastic magnetic tape reels through wired foam headphones.",
+    newDescription: "Truly wireless Bluetooth earbuds paired with cloud streaming holding curated algorithm playlists.",
+    whatChanged: "Tangled magnetic tape and HB pencil rewinding evolved into wireless touch-control earbuds with active noise cancellation.",
+    whyBetter: "No magnetic tape entanglements, no battery drain from mechanical motors, hands-free voice commands, and spatial audio."
+  },
+  {
+    id: 7,
+    oldName: "Hurricane Kerosene Lantern",
+    newName: "Rechargeable LED Light",
+    oldImage: "https://images.unsplash.com/photo-1517411032315-54ef2cb783bb?auto=format&fit=crop&w=800&q=80",
+    newImage: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
+    category: "Home & Living",
+    oldDescription: "Liquid kerosene flame lamp with cotton wick and glass globe producing warm flickering light and soot.",
+    newDescription: "Solid-state Light Emitting Diode (LED) panel powered by rechargeable lithium-ion batteries or solar panels.",
+    whatChanged: "Combustion liquid flame lighting evolved into safe, high-lumen, cool-to-touch semiconductor illumination.",
+    whyBetter: "Zero fire hazard or liquid fuel fumes, bright 500+ lumen output, dimmable color warmth, and solar battery charging."
+  },
+  {
+    id: 8,
+    oldName: "Black & White Cathode-Ray TV",
+    newName: "Smart 4K OLED TV",
+    oldImage: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=800&q=80",
+    newImage: "https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80",
+    category: "Home & Living",
+    oldDescription: "Heavy wooden box containing a curved glass vacuum tube displaying 525-line monochrome black-and-white video.",
+    newDescription: "Ultra-thin 4K display with self-lit organic pixels, High Dynamic Range (HDR), and on-demand streaming apps.",
+    whatChanged: "Monochrome electron beam vacuum tubes evolved into 8 million self-emissive organic color pixels on a razor-thin glass panel.",
+    whyBetter: "Vibrant true-to-life 4K color, ultra-wide viewing angles, zero bulky depth weight, and instant YouTube/Netflix access."
+  },
+  {
+    id: 9,
+    oldName: "3.5-inch Floppy Disk",
+    newName: "Cloud Storage (Google Drive)",
+    oldImage: "https://images.unsplash.com/photo-1544652478-6653e09f18a2?auto=format&fit=crop&w=800&q=80",
+    newImage: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=800&q=80",
+    category: "Technology",
+    oldDescription: "Square plastic magnetic disk holding exactly 1.44 MB of files inserted into desktop computer floppy drives.",
+    newDescription: "Encrypted remote cloud datacenters offering Terabytes of accessible storage from any browser or smartphone.",
+    whatChanged: "Fragile 1.44 Megabyte plastic disks prone to magnetic corruption evolved into encrypted server clusters with auto-backup.",
+    whyBetter: "Virtually infinite storage space, access files anywhere without carrying physical plastic disks, and automatic version history."
+  }
+];
