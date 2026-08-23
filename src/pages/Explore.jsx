@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { Search, RotateCcw, Layers } from 'lucide-react';
 import { objects } from '../data/objects';
 import { categories } from '../data/categories';

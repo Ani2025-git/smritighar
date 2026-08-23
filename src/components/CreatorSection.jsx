@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { ExternalLink, Code2, UserCheck } from 'lucide-react';
 
 const CreatorSection = () => {

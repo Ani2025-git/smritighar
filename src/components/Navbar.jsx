@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { Landmark, Search, Menu, X, Sparkles } from 'lucide-react';
 import SearchBarModal from './SearchBarModal';
 import LanguageSwitcher from './LanguageSwitcher';

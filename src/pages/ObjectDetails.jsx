@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { 
   ArrowLeft, Clock, MapPin, Wrench, RefreshCw, Lightbulb, 
   HelpCircle, History as HistoryIcon, Map, Award, Sparkles 

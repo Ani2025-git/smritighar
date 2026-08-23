@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { categories } from '../data/categories';
 import CategoryCard from '../components/CategoryCard';
 

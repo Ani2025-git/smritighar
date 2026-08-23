@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { ArrowRight, Layers } from 'lucide-react';
 
 const CategoryCard = ({ category }) => {

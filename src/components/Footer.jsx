@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { Landmark, Compass, Heart, Scroll } from 'lucide-react';
 
 const Footer = () => {

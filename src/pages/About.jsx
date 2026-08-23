@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { Landmark, Shield, GraduationCap, Sparkles, Scroll, ArrowRight } from 'lucide-react';
 import CreatorSection from '../components/CreatorSection';
 

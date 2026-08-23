@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { ArrowRightLeft, CheckCircle, HelpCircle } from 'lucide-react';
 import { comparisons } from '../data/comparisons';
 

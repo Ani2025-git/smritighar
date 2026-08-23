@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { Clock, Calendar, Sparkles } from 'lucide-react';
 import { eras } from '../data/eras';
 import { objects } from '../data/objects';

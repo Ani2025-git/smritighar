@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { Sparkles, Clock, Compass, BookOpen, ArrowRight, Award } from 'lucide-react';
 import { objects } from '../data/objects';
 import { categories } from '../data/categories';

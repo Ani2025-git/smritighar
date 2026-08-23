@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '../context/LanguageContext';
 import { 
   GraduationCap, BookOpen, Lightbulb, History, ArrowRight, 
   CheckCircle2, Bookmark, Award, Copy, Check 
