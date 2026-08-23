@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "home": "Home",
+    "explore": "Explore",
+    "categories": "Categories",
+    "timeline": "Timeline",
+    "thenVsNow": "Then vs Now",
+    "studentCorner": "Student Corner",
+    "about": "About",
+    "exploreMuseum": "Explore Museum",
+    "searchPlaceholder": "Search telephone, radio, camera, 1980s..."
+  },
+  "hero": {
+    "badge": "Educational Digital Museum & Knowledge Archive",
+    "title": "Things We Once Lived With.",
+    "subtitle": "A digital museum preserving the objects, technologies, and everyday items that shaped the lives of previous generations.",
+    "tagline": "Explore. Learn. Remember.",
+    "exploreBtn": "Explore Museum",
+    "timelineBtn": "Browse Timeline"
+  },
+  "featuredCollections": {
+    "badge": "Exhibition Galleries",
+    "title": "Treasures Worth Remembering",
+    "subtitle": "Discover objects that were once an irreplaceable part of everyday life.",
+    "exploreCategory": "Explore Category"
+  },
+  "featuredObjects": {
+    "badge": "Permanent Exhibition",
+    "title": "Featured Museum Objects",
+    "subtitle": "Explore 12 iconic artifacts from previous generations.",
+    "viewAll": "View Full Archive",
+    "viewDetails": "View Details",
+    "replacedBy": "Replaced by"
+  },
+  "categories": {
+    "communication": "Communication",
+    "technology": "Technology",
+    "homeLiving": "Home & Living",
+    "education": "Education",
+    "entertainment": "Entertainment",
+    "photography": "Photography",
+    "transport": "Transport",
+    "moneyCurrency": "Money & Currency",
+    "agricultureVillage": "Agriculture & Village Life",
+    "toolsEquipment": "Tools & Equipment"
+  },
+  "objectNames": {
+    "rotaryTelephone": "Rotary Telephone",
+    "gramophone": "Gramophone",
+    "vintageRadio": "Vintage Valve Radio",
+    "typewriter": "Mechanical Typewriter",
+    "filmCamera": "35mm Film Camera",
+    "cassettePlayer": "Cassette Player & Walkman",
+    "bwTv": "Black & White Cathode-Ray TV",
+    "lantern": "Brass Hurricane Lantern",
+    "floppyDisk": "3.5-inch Floppy Disk",
+    "postcard": "Vintage Postcard & Letter",
+    "oldCoins": "Vintage Copper Coins",
+    "schoolSlate": "Wooden School Slate"
+  },
+  "details": {
+    "whatIsIt": "What Is It?",
+    "history": "Historical Origin & Evolution",
+    "howItWorked": "How Did It Work?",
+    "whereUsed": "Where Was It Used?",
+    "importance": "Why Was It Important?",
+    "whatReplacedIt": "What Replaced It?",
+    "studentQuickNotes": "Student Quick Notes",
+    "didYouKnow": "Did You Know?",
+    "relatedObjects": "You May Also Like",
+    "backToArchive": "Back to Archive",
+    "approxYears": "Approx. Years",
+    "origin": "Historical Origin",
+    "modernEquivalent": "Modern Equivalent"
+  },
+  "thenVsNow": {
+    "title": "Then vs Now",
+    "subtitle": "See how everyday technology has evolved over the decades.",
+    "thenLabel": "THEN (Past Generation)",
+    "nowLabel": "NOW (Modern Generation)",
+    "whatChanged": "What Changed?",
+    "whyBetter": "Why Was New Technology Better?"
+  },
+  "studentCorner": {
+    "title": "Student Corner",
+    "subtitle": "Learn history, science, and technological innovation through the everyday objects people once used.",
+    "objectOfWeek": "Object of the Week",
+    "quickLearning": "Quick Learning Bytes",
+    "evolutionPathways": "Technology Evolution Pathways",
+    "triviaTitle": "Historical Trivia & Fun Facts",
+    "projectHelper": "School Project Helper",
+    "copyProject": "Copy Outline for Assignment",
+    "copied": "Copied Project Guide!"
+  },
+  "about": {
+    "title": "Why SmritiGhar Exists",
+    "tagline": "Preserve. Educate. Inspire.",
+    "manifesto": "Many objects that were once an important part of everyday life are slowly disappearing. Future generations may never use or even see cassette players, rotary telephones, typewriters, gramophones, film cameras and many other objects that shaped previous generations.",
+    "preserve": "Preserve",
+    "preserveDesc": "Keep knowledge, operational mechanisms, and historical memories about vintage objects alive for future generations.",
+    "educate": "Educate",
+    "educateDesc": "Help students and young visitors understand everyday technologies and household tools used by their parents and grandparents.",
+    "inspire": "Inspire",
+    "inspireDesc": "Show how human creativity, engineering, and technology continuously evolve to solve everyday challenges over time."
+  },
+  "creator": {
+    "badge": "About The Developer",
+    "role": "Web Developer",
+    "quote": "I created SmritiGhar to help students and curious people learn about old objects, technologies and memories from the past.",
+    "visitBtn": "Visit My Website"
+  },
+  "footer": {
+    "tagline": "Museum of Forgotten Things",
+    "description": "An Educational Digital Museum & Knowledge Archive preserving the objects, everyday technologies, and cultural artifacts that shaped previous generations.",
+    "curatorNote": "Curator's Note",
+    "curatorQuote": "Objects are not merely wood, metal, or glass; they are physical vessels carrying human stories, creativity, and the everyday rhythm of times gone by.",
+    "rights": "All rights reserved."
+  }
+}

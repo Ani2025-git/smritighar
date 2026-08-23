@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Landmark, Shield, GraduationCap, Sparkles, Scroll, ArrowRight, Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Landmark, Shield, GraduationCap, Sparkles, Scroll, ArrowRight } from 'lucide-react';
 import CreatorSection from '../components/CreatorSection';
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
       
@@ -14,10 +17,10 @@ const About = () => {
           <span>Educational Museum Manifesto</span>
         </span>
         <h1 className="font-serif text-4xl sm:text-6xl font-extrabold text-cream">
-          Why SmritiGhar Exists
+          {t('about.title')}
         </h1>
         <p className="font-serif italic text-amber-goldLight text-xl sm:text-2xl">
-          Preserve. Educate. Inspire.
+          {t('about.tagline')}
         </p>
       </div>
 
@@ -29,7 +32,7 @@ const About = () => {
 
         <div className="max-w-4xl space-y-6 text-parchment-light text-base sm:text-lg leading-relaxed font-sans relative z-10">
           <p className="text-xl sm:text-2xl font-serif text-cream leading-snug border-l-4 border-amber-gold pl-4 py-1 italic">
-            "Many objects that were once an important part of everyday life are slowly disappearing. Future generations may never use or even see cassette players, rotary telephones, typewriters, gramophones, film cameras and many other objects that shaped previous generations."
+            "{t('about.manifesto')}"
           </p>
 
           <p>
@@ -47,7 +50,7 @@ const About = () => {
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <span className="text-xs uppercase tracking-widest text-amber-gold font-semibold">Our Core Pillars</span>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-cream">
-            The Three Pillars of SmritiGhar
+            {t('about.tagline')}
           </h2>
         </div>
 
@@ -59,10 +62,10 @@ const About = () => {
               <Shield className="w-7 h-7" />
             </div>
             <h3 className="font-serif text-2xl font-bold text-cream group-hover:text-amber-gold">
-              Preserve
+              {t('about.preserve')}
             </h3>
             <p className="text-xs sm:text-sm text-parchment-dark leading-relaxed font-sans">
-              Keep knowledge, operational mechanisms, and historical memories about vintage objects alive for future generations.
+              {t('about.preserveDesc')}
             </p>
           </div>
 
@@ -72,10 +75,10 @@ const About = () => {
               <GraduationCap className="w-7 h-7" />
             </div>
             <h3 className="font-serif text-2xl font-bold text-cream group-hover:text-amber-gold">
-              Educate
+              {t('about.educate')}
             </h3>
             <p className="text-xs sm:text-sm text-parchment-dark leading-relaxed font-sans">
-              Help students and young visitors understand everyday technologies and household tools used by their parents and grandparents.
+              {t('about.educateDesc')}
             </p>
           </div>
 
@@ -85,10 +88,10 @@ const About = () => {
               <Sparkles className="w-7 h-7" />
             </div>
             <h3 className="font-serif text-2xl font-bold text-cream group-hover:text-amber-gold">
-              Inspire
+              {t('about.inspire')}
             </h3>
             <p className="text-xs sm:text-sm text-parchment-dark leading-relaxed font-sans">
-              Show how human creativity, engineering, and technology continuously evolve to solve everyday challenges over time.
+              {t('about.inspireDesc')}
             </p>
           </div>
 
@@ -97,7 +100,6 @@ const About = () => {
 
       {/* MEET THE DEVELOPER / ABOUT US */}
       <CreatorSection />
-
 
       {/* EXPLORE CTA */}
       <section className="bg-parchment-pattern text-ink-dark rounded-3xl p-8 sm:p-12 border-2 border-amber-gold shadow-museum text-center space-y-6">
@@ -112,7 +114,7 @@ const About = () => {
             to="/explore"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-wood-dark text-amber-gold font-bold text-sm shadow-md hover:bg-wood-light transition-colors"
           >
-            <span>Explore Museum Catalogue</span>
+            <span>{t('hero.exploreBtn')}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

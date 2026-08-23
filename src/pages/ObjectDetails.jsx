@@ -1,8 +1,9 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { 
   ArrowLeft, Clock, MapPin, Wrench, RefreshCw, Lightbulb, 
-  HelpCircle, History as HistoryIcon, Map, Award, Sparkles, BookOpen 
+  HelpCircle, History as HistoryIcon, Map, Award, Sparkles 
 } from 'lucide-react';
 import { objects } from '../data/objects';
 import StudentNote from '../components/StudentNote';
@@ -11,6 +12,7 @@ import ObjectCard from '../components/ObjectCard';
 
 const ObjectDetails = () => {
   const { slug } = useParams();
+  const { t, i18n } = useTranslation();
   const object = objects.find((o) => o.slug === slug);
 
   if (!object) {
@@ -29,6 +31,24 @@ const ObjectDetails = () => {
     );
   }
 
+  const getTranslatedName = (name) => {
+    if (name.includes('Telephone')) return t('objectNames.rotaryTelephone');
+    if (name.includes('Gramophone')) return t('objectNames.gramophone');
+    if (name.includes('Radio')) return t('objectNames.vintageRadio');
+    if (name.includes('Typewriter')) return t('objectNames.typewriter');
+    if (name.includes('Camera')) return t('objectNames.filmCamera');
+    if (name.includes('Cassette')) return t('objectNames.cassettePlayer');
+    if (name.includes('Television') || name.includes('TV')) return t('objectNames.bwTv');
+    if (name.includes('Lantern')) return t('objectNames.lantern');
+    if (name.includes('Floppy')) return t('objectNames.floppyDisk');
+    if (name.includes('Postcard') || name.includes('Letter')) return t('objectNames.postcard');
+    if (name.includes('Coin')) return t('objectNames.oldCoins');
+    if (name.includes('Slate')) return t('objectNames.schoolSlate');
+    return name;
+  };
+
+  const displayName = i18n.language !== 'en' ? getTranslatedName(object.name) : object.name;
+
   // Get related objects from same category or era (excluding current)
   const relatedObjects = objects
     .filter((o) => o.id !== object.id && (o.category === object.category || o.era === object.era))
@@ -41,12 +61,12 @@ const ObjectDetails = () => {
       <div className="flex items-center justify-between text-xs text-parchment-dark border-b border-amber-gold/20 pb-4">
         <Link to="/explore" className="hover:text-amber-gold flex items-center gap-1.5 transition-colors font-medium">
           <ArrowLeft className="w-4 h-4" />
-          <span>Back to Archive</span>
+          <span>{t('details.backToArchive')}</span>
         </Link>
         <div className="flex items-center gap-2">
           <span className="text-amber-gold">{object.category}</span>
           <span>/</span>
-          <span className="text-cream">{object.name}</span>
+          <span className="text-cream">{displayName}</span>
         </div>
       </div>
 
@@ -57,7 +77,7 @@ const ObjectDetails = () => {
         <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden border-2 border-amber-gold/40 shadow-cabinet">
           <img
             src={object.image}
-            alt={object.name}
+            alt={displayName}
             className="w-full h-full object-cover sepia-hover"
           />
           <div className="absolute top-3 left-3 px-3 py-1 rounded-lg bg-museum-950/90 border border-amber-gold/40 text-amber-gold text-xs font-bold flex items-center gap-1">
@@ -74,7 +94,7 @@ const ObjectDetails = () => {
               <span>{object.category} Artifact</span>
             </div>
             <h1 className="font-serif text-4xl sm:text-5xl font-extrabold text-cream leading-tight">
-              {object.name}
+              {displayName}
             </h1>
             <p className="text-parchment text-base mt-2 italic font-serif">
               "{object.shortDescription}"
@@ -84,12 +104,12 @@ const ObjectDetails = () => {
           {/* QUICK METADATA GRID */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-amber-gold/20 text-xs">
             <div className="bg-museum-950/60 p-3 rounded-xl border border-amber-gold/20">
-              <span className="text-parchment-dark/70 block uppercase tracking-wider text-[10px]">Approx. Years</span>
+              <span className="text-parchment-dark/70 block uppercase tracking-wider text-[10px]">{t('details.approxYears')}</span>
               <span className="font-semibold text-cream text-sm mt-0.5 block">{object.year}</span>
             </div>
 
             <div className="bg-museum-950/60 p-3 rounded-xl border border-amber-gold/20">
-              <span className="text-parchment-dark/70 block uppercase tracking-wider text-[10px]">Historical Origin</span>
+              <span className="text-parchment-dark/70 block uppercase tracking-wider text-[10px]">{t('details.origin')}</span>
               <span className="font-semibold text-cream text-sm mt-0.5 block flex items-center gap-1">
                 <MapPin className="w-3 h-3 text-amber-gold" />
                 {object.origin}
@@ -97,7 +117,7 @@ const ObjectDetails = () => {
             </div>
 
             <div className="bg-museum-950/60 p-3 rounded-xl border border-amber-gold/20 col-span-2 sm:col-span-1">
-              <span className="text-parchment-dark/70 block uppercase tracking-wider text-[10px]">Modern Equivalent</span>
+              <span className="text-parchment-dark/70 block uppercase tracking-wider text-[10px]">{t('details.modernEquivalent')}</span>
               <span className="font-semibold text-amber-gold text-sm mt-0.5 block flex items-center gap-1">
                 <RefreshCw className="w-3 h-3" />
                 {object.modernEquivalent}
@@ -109,7 +129,7 @@ const ObjectDetails = () => {
       </div>
 
       {/* STUDENT QUICK NOTES HIGHLIGHT BOX */}
-      <StudentNote notes={object.quickNotes} title={`Student Quick Notes: ${object.name}`} />
+      <StudentNote notes={object.quickNotes} title={`${t('details.studentQuickNotes')}: ${displayName}`} />
 
       {/* EDUCATIONAL DETAILED SECTIONS */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -121,7 +141,7 @@ const ObjectDetails = () => {
           <section className="bg-wood-dark/50 p-6 sm:p-8 rounded-2xl border border-amber-gold/20 space-y-3">
             <div className="flex items-center gap-2.5 text-amber-gold border-b border-amber-gold/20 pb-3">
               <HelpCircle className="w-5 h-5" />
-              <h2 className="font-serif text-2xl font-bold text-cream">What Is It?</h2>
+              <h2 className="font-serif text-2xl font-bold text-cream">{t('details.whatIsIt')}</h2>
             </div>
             <p className="text-parchment-light text-base leading-relaxed font-sans pt-2">
               {object.whatIsIt}
@@ -132,7 +152,7 @@ const ObjectDetails = () => {
           <section className="bg-wood-dark/50 p-6 sm:p-8 rounded-2xl border border-amber-gold/20 space-y-3">
             <div className="flex items-center gap-2.5 text-amber-gold border-b border-amber-gold/20 pb-3">
               <HistoryIcon className="w-5 h-5" />
-              <h2 className="font-serif text-2xl font-bold text-cream">Historical Origin & Evolution</h2>
+              <h2 className="font-serif text-2xl font-bold text-cream">{t('details.history')}</h2>
             </div>
             <p className="text-parchment-light text-base leading-relaxed font-sans pt-2">
               {object.history}
@@ -143,7 +163,7 @@ const ObjectDetails = () => {
           <section className="bg-wood-dark/50 p-6 sm:p-8 rounded-2xl border border-amber-gold/20 space-y-3">
             <div className="flex items-center gap-2.5 text-amber-gold border-b border-amber-gold/20 pb-3">
               <Wrench className="w-5 h-5" />
-              <h2 className="font-serif text-2xl font-bold text-cream">How Did It Work?</h2>
+              <h2 className="font-serif text-2xl font-bold text-cream">{t('details.howItWorked')}</h2>
             </div>
             <p className="text-parchment-light text-base leading-relaxed font-sans pt-2">
               {object.howItWorked}
@@ -155,7 +175,7 @@ const ObjectDetails = () => {
             <div className="bg-wood-dark/50 p-6 rounded-2xl border border-amber-gold/20 space-y-2">
               <div className="flex items-center gap-2 text-amber-gold mb-2">
                 <Map className="w-4 h-4" />
-                <h3 className="font-serif text-xl font-bold text-cream">Where Was It Used?</h3>
+                <h3 className="font-serif text-xl font-bold text-cream">{t('details.whereUsed')}</h3>
               </div>
               <p className="text-parchment-dark text-sm leading-relaxed">
                 {object.whereUsed}
@@ -165,7 +185,7 @@ const ObjectDetails = () => {
             <div className="bg-wood-dark/50 p-6 rounded-2xl border border-amber-gold/20 space-y-2">
               <div className="flex items-center gap-2 text-amber-gold mb-2">
                 <Sparkles className="w-4 h-4" />
-                <h3 className="font-serif text-xl font-bold text-cream">Why Was It Important?</h3>
+                <h3 className="font-serif text-xl font-bold text-cream">{t('details.importance')}</h3>
               </div>
               <p className="text-parchment-dark text-sm leading-relaxed">
                 {object.importance}
@@ -174,7 +194,7 @@ const ObjectDetails = () => {
           </div>
 
           {/* SECTION 5: WHAT REPLACED IT (EVOLUTION DIAGRAM) */}
-          <EvolutionDiagram steps={object.evolutionChain} title={`What Replaced the ${object.name}?`} />
+          <EvolutionDiagram steps={object.evolutionChain} title={`${t('details.whatReplacedIt')} ${displayName}`} />
 
         </div>
 
@@ -183,7 +203,7 @@ const ObjectDetails = () => {
           <div className="bg-wood-dark/80 p-6 rounded-2xl border-2 border-amber-gold/40 shadow-museum space-y-4">
             <div className="flex items-center gap-2 text-amber-gold border-b border-amber-gold/20 pb-3">
               <Lightbulb className="w-5 h-5 text-amber-gold" />
-              <h3 className="font-serif text-xl font-bold text-cream">Did You Know?</h3>
+              <h3 className="font-serif text-xl font-bold text-cream">{t('details.didYouKnow')}</h3>
             </div>
 
             <div className="space-y-3">
@@ -216,7 +236,7 @@ const ObjectDetails = () => {
       {/* RELATED OBJECTS SECTION */}
       {relatedObjects.length > 0 && (
         <section className="pt-8 border-t border-amber-gold/20 space-y-6">
-          <h2 className="font-serif text-2xl font-bold text-cream">You May Also Like</h2>
+          <h2 className="font-serif text-2xl font-bold text-cream">{t('details.relatedObjects')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {relatedObjects.map((rel) => (
               <ObjectCard key={rel.id} object={rel} />

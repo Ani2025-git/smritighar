@@ -1,7 +1,10 @@
 import React from 'react';
-import { ExternalLink, Code2, Sparkles, UserCheck } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { ExternalLink, Code2, UserCheck } from 'lucide-react';
 
 const CreatorSection = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="my-12 bg-wood-dark/90 rounded-3xl p-8 sm:p-10 border-2 border-amber-gold/40 shadow-museum relative overflow-hidden">
       {/* Background spotlight overlay */}
@@ -30,18 +33,18 @@ const CreatorSection = () => {
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs text-amber-gold font-semibold uppercase tracking-widest mb-1">
               <UserCheck className="w-4 h-4 text-amber-gold" />
-              <span>About The Developer</span>
+              <span>{t('creator.badge')}</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-cream">
               Animesh Mishra
             </h2>
             <p className="text-amber-goldLight font-sans font-medium text-sm">
-              Web Developer
+              {t('creator.role')}
             </p>
           </div>
 
           <p className="font-serif italic text-parchment-light text-base sm:text-lg leading-relaxed bg-museum-950/60 p-4 rounded-2xl border border-amber-gold/20">
-            “I created SmritiGhar to help students and curious people learn about old objects, technologies and memories from the past.”
+            {t('creator.quote')}
           </p>
 
           <div className="pt-2">
@@ -51,7 +54,7 @@ const CreatorSection = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-goldDark via-amber-gold to-amber-goldLight text-museum-950 font-bold text-sm shadow-gold-glow hover:scale-105 transition-all cursor-pointer"
             >
-              <span>Visit My Website</span>
+              <span>{t('creator.visitBtn')}</span>
               <ExternalLink className="w-4 h-4 text-museum-950" />
             </a>
           </div>

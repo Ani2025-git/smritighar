@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sparkles, Clock, Compass, BookOpen, Layers, ArrowRight, ShieldCheck, Award } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Sparkles, Clock, Compass, BookOpen, ArrowRight, Award } from 'lucide-react';
 import { objects } from '../data/objects';
 import { categories } from '../data/categories';
 import ObjectCard from '../components/ObjectCard';
@@ -8,6 +9,8 @@ import CategoryCard from '../components/CategoryCard';
 import CreatorSection from '../components/CreatorSection';
 
 const Home = () => {
+  const { t } = useTranslation();
+
   // Get featured categories (top 6 requested)
   const featuredCategorySlugs = ['communication', 'technology', 'home-living', 'photography', 'education', 'entertainment'];
   const featuredCategories = categories.filter((c) => featuredCategorySlugs.includes(c.slug));
@@ -39,19 +42,19 @@ const Home = () => {
           
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-wood-dark/80 border border-amber-gold/40 text-amber-gold text-xs uppercase tracking-widest shadow-gold-glow animate-fadeIn">
             <Sparkles className="w-4 h-4 text-amber-gold" />
-            <span>Educational Digital Museum & Knowledge Archive</span>
+            <span>{t('hero.badge')}</span>
           </div>
 
           <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-extrabold text-cream tracking-tight leading-none drop-shadow-md">
-            Things We Once Lived With<span className="text-amber-gold">.</span>
+            {t('hero.title')}
           </h1>
 
           <p className="max-w-3xl mx-auto text-lg sm:text-xl text-parchment font-sans leading-relaxed font-normal drop-shadow">
-            A digital museum preserving the objects, technologies, and everyday items that shaped the lives of previous generations.
+            {t('hero.subtitle')}
           </p>
 
           <div className="font-serif italic text-amber-goldLight text-xl tracking-wider">
-            Explore. Learn. Remember.
+            {t('hero.tagline')}
           </div>
 
           {/* BUTTONS */}
@@ -61,7 +64,7 @@ const Home = () => {
               className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-gradient-to-r from-amber-goldDark via-amber-gold to-amber-goldLight text-museum-950 font-bold text-base shadow-gold-glow hover:scale-105 transition-all cursor-pointer"
             >
               <Compass className="w-5 h-5 text-museum-950" />
-              <span>Explore Museum</span>
+              <span>{t('hero.exploreBtn')}</span>
             </Link>
 
             <Link
@@ -69,7 +72,7 @@ const Home = () => {
               className="inline-flex items-center gap-2.5 px-8 py-4 rounded-xl bg-wood-dark/90 text-cream hover:text-amber-gold font-semibold text-base border border-amber-gold/40 hover:border-amber-gold shadow-museum hover:scale-105 transition-all cursor-pointer"
             >
               <Clock className="w-5 h-5 text-amber-gold" />
-              <span>Browse Timeline</span>
+              <span>{t('hero.timelineBtn')}</span>
             </Link>
           </div>
         </div>
@@ -78,12 +81,12 @@ const Home = () => {
       {/* 2. FEATURED COLLECTIONS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 space-y-3">
-          <span className="text-xs uppercase tracking-widest text-amber-gold font-semibold">Exhibition Galleries</span>
+          <span className="text-xs uppercase tracking-widest text-amber-gold font-semibold">{t('featuredCollections.badge')}</span>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-cream">
-            Treasures Worth Remembering
+            {t('featuredCollections.title')}
           </h2>
           <p className="text-parchment-dark text-base">
-            Discover objects that were once an irreplaceable part of everyday life.
+            {t('featuredCollections.subtitle')}
           </p>
         </div>
 
@@ -100,13 +103,13 @@ const Home = () => {
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs text-amber-gold font-semibold uppercase tracking-widest mb-1">
               <Award className="w-4 h-4" />
-              <span>Permanent Exhibition</span>
+              <span>{t('featuredObjects.badge')}</span>
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-cream">
-              Featured Museum Objects
+              {t('featuredObjects.title')}
             </h2>
             <p className="text-parchment-dark text-sm mt-1">
-              Explore 12 iconic artifacts from previous generations.
+              {t('featuredObjects.subtitle')}
             </p>
           </div>
 
@@ -114,7 +117,7 @@ const Home = () => {
             to="/explore"
             className="inline-flex items-center gap-2 text-amber-gold hover:text-amber-goldLight text-sm font-semibold group cursor-pointer"
           >
-            <span>View Full Archive ({objects.length} Items)</span>
+            <span>{t('featuredObjects.viewAll')} ({objects.length})</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -132,11 +135,11 @@ const Home = () => {
           <div className="max-w-3xl space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-wood-dark text-amber-gold text-xs font-semibold uppercase tracking-widest">
               <BookOpen className="w-4 h-4" />
-              <span>Designed for Students & Schools</span>
+              <span>{t('nav.studentCorner')}</span>
             </div>
 
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-ink-dark leading-tight">
-              Bridging Generations Through Historical Objects
+              {t('studentCorner.subtitle')}
             </h2>
 
             <p className="text-ink-medium text-base sm:text-lg leading-relaxed">
@@ -148,13 +151,13 @@ const Home = () => {
                 to="/student-corner"
                 className="px-6 py-3 rounded-xl bg-wood-dark text-cream font-bold text-sm hover:bg-wood-light shadow-md transition-colors"
               >
-                Open Student Corner
+                {t('nav.studentCorner')}
               </Link>
               <Link
                 to="/then-vs-now"
                 className="px-6 py-3 rounded-xl bg-amber-gold/20 text-ink-dark font-bold text-sm border border-amber-goldDark hover:bg-amber-gold/40 transition-colors"
               >
-                Compare Then vs Now
+                {t('nav.thenVsNow')}
               </Link>
             </div>
           </div>

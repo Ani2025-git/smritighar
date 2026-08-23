@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { 
   GraduationCap, BookOpen, Lightbulb, History, ArrowRight, 
-  Sparkles, CheckCircle2, Bookmark, Award, Copy, Check 
+  CheckCircle2, Bookmark, Award, Copy, Check 
 } from 'lucide-react';
 import { quickLearningTopics, studentTrivia, evolutionFlows, schoolProjects, objectOfTheWeek } from '../data/studentData';
 import EvolutionDiagram from '../components/EvolutionDiagram';
 
 const StudentCorner = () => {
+  const { t, i18n } = useTranslation();
   const [copiedIndex, setCopiedIndex] = React.useState(null);
 
   const handleCopySummary = (text, index) => {
@@ -16,6 +18,24 @@ const StudentCorner = () => {
     setTimeout(() => setCopiedIndex(null), 2000);
   };
 
+  const getTranslatedName = (name) => {
+    if (name.includes('Telephone')) return t('objectNames.rotaryTelephone');
+    if (name.includes('Gramophone')) return t('objectNames.gramophone');
+    if (name.includes('Radio')) return t('objectNames.vintageRadio');
+    if (name.includes('Typewriter')) return t('objectNames.typewriter');
+    if (name.includes('Camera')) return t('objectNames.filmCamera');
+    if (name.includes('Cassette')) return t('objectNames.cassettePlayer');
+    if (name.includes('Television') || name.includes('TV')) return t('objectNames.bwTv');
+    if (name.includes('Lantern')) return t('objectNames.lantern');
+    if (name.includes('Floppy')) return t('objectNames.floppyDisk');
+    if (name.includes('Postcard') || name.includes('Letter')) return t('objectNames.postcard');
+    if (name.includes('Coin')) return t('objectNames.oldCoins');
+    if (name.includes('Slate')) return t('objectNames.schoolSlate');
+    return name;
+  };
+
+  const objectOfWeekName = i18n.language !== 'en' ? getTranslatedName(objectOfTheWeek.name) : objectOfTheWeek.name;
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
       
@@ -23,13 +43,13 @@ const StudentCorner = () => {
       <div className="text-center max-w-3xl mx-auto space-y-4">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-parchment-light text-ink-dark font-bold text-xs uppercase tracking-widest border border-amber-gold">
           <GraduationCap className="w-4 h-4 text-amber-goldDark" />
-          <span>Student Learning Portal</span>
+          <span>{t('studentCorner.title')}</span>
         </div>
         <h1 className="font-serif text-4xl sm:text-5xl font-extrabold text-cream">
-          Student Corner
+          {t('studentCorner.title')}
         </h1>
         <p className="text-parchment-dark text-base sm:text-lg leading-relaxed">
-          Learn history, science, and technological innovation through the everyday objects and inventions people once lived with.
+          {t('studentCorner.subtitle')}
         </p>
       </div>
 
@@ -37,22 +57,22 @@ const StudentCorner = () => {
       <section className="bg-wood-dark/80 rounded-3xl p-6 sm:p-10 border-2 border-amber-gold shadow-museum relative overflow-hidden">
         <div className="absolute top-0 right-0 bg-amber-gold text-museum-950 text-xs font-bold uppercase tracking-widest px-5 py-1.5 rounded-bl-2xl flex items-center gap-1.5">
           <Award className="w-4 h-4" />
-          <span>Object of the Week</span>
+          <span>{t('studentCorner.objectOfWeek')}</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
           <div className="lg:col-span-5 aspect-[4/3] rounded-2xl overflow-hidden border-2 border-amber-gold/40 shadow-cabinet">
             <img
               src={objectOfTheWeek.image}
-              alt={objectOfTheWeek.name}
+              alt={objectOfWeekName}
               className="w-full h-full object-cover sepia-hover"
             />
           </div>
 
           <div className="lg:col-span-7 space-y-4">
-            <span className="text-xs text-amber-gold font-semibold uppercase tracking-widest">Featured Artifact Study</span>
+            <span className="text-xs text-amber-gold font-semibold uppercase tracking-widest">{t('studentCorner.objectOfWeek')}</span>
             <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-cream">
-              {objectOfTheWeek.name} ({objectOfTheWeek.era})
+              {objectOfWeekName} ({objectOfTheWeek.era})
             </h2>
             <p className="text-parchment text-sm leading-relaxed italic bg-museum-950/60 p-4 rounded-xl border border-amber-gold/20">
               "{objectOfTheWeek.curatorNote}"
@@ -72,7 +92,7 @@ const StudentCorner = () => {
                 to={`/object/${objectOfTheWeek.slug}`}
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-amber-gold text-museum-950 font-bold text-xs shadow-gold-glow hover:bg-amber-goldLight"
               >
-                <span>Read Full Case Study</span>
+                <span>{t('featuredObjects.viewDetails')}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -85,11 +105,8 @@ const StudentCorner = () => {
         <div className="border-b border-amber-gold/20 pb-4">
           <h2 className="font-serif text-3xl font-bold text-cream flex items-center gap-2">
             <BookOpen className="w-6 h-6 text-amber-gold" />
-            <span>Quick Learning Bytes</span>
+            <span>{t('studentCorner.quickLearning')}</span>
           </h2>
-          <p className="text-parchment-dark text-sm mt-1">
-            Short, easy-to-understand explanations of historical technologies for student revisions.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -123,11 +140,8 @@ const StudentCorner = () => {
         <div className="border-b border-amber-gold/20 pb-4">
           <h2 className="font-serif text-3xl font-bold text-cream flex items-center gap-2">
             <History className="w-6 h-6 text-amber-gold" />
-            <span>Technology Evolution Pathways</span>
+            <span>{t('studentCorner.evolutionPathways')}</span>
           </h2>
-          <p className="text-parchment-dark text-sm mt-1">
-            Trace step-by-step how everyday inventions evolved across generations.
-          </p>
         </div>
 
         <div className="space-y-6">
@@ -142,11 +156,8 @@ const StudentCorner = () => {
         <div className="border-b border-amber-gold/20 pb-4">
           <h2 className="font-serif text-3xl font-bold text-cream flex items-center gap-2">
             <Lightbulb className="w-6 h-6 text-amber-gold" />
-            <span>Historical Trivia & Fun Facts</span>
+            <span>{t('studentCorner.triviaTitle')}</span>
           </h2>
-          <p className="text-parchment-dark text-sm mt-1">
-            Surprising facts about life before modern digital tech.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -159,7 +170,7 @@ const StudentCorner = () => {
                 #{idx + 1}
               </div>
               <span className="text-[10px] font-bold uppercase tracking-widest text-amber-gold block">
-                Did You Know?
+                {t('details.didYouKnow')}
               </span>
               <p className="text-xs sm:text-sm text-parchment-light leading-relaxed relative z-10 pt-1">
                 "{fact}"
@@ -174,7 +185,7 @@ const StudentCorner = () => {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-wood-dark text-amber-gold text-xs font-bold uppercase tracking-widest">
             <Bookmark className="w-3.5 h-3.5" />
-            <span>School Project Helper</span>
+            <span>{t('studentCorner.projectHelper')}</span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl font-extrabold text-ink-dark">
             History & Technology Project Reference Guides
@@ -212,12 +223,12 @@ const StudentCorner = () => {
                   {copiedIndex === idx ? (
                     <>
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
-                      <span className="text-emerald-400">Copied Project Guide!</span>
+                      <span className="text-emerald-400">{t('studentCorner.copied')}</span>
                     </>
                   ) : (
                     <>
                       <Copy className="w-3.5 h-3.5" />
-                      <span>Copy Outline for Assignment</span>
+                      <span>{t('studentCorner.copyProject')}</span>
                     </>
                   )}
                 </button>

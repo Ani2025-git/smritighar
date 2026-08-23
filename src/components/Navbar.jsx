@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Landmark, Search, Menu, X, Sparkles, BookOpen } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Landmark, Search, Menu, X, Sparkles } from 'lucide-react';
 import SearchBarModal from './SearchBarModal';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Explore', path: '/explore' },
-    { name: 'Categories', path: '/categories' },
-    { name: 'Timeline', path: '/timeline' },
-    { name: 'Then vs Now', path: '/then-vs-now' },
-    { name: 'Student Corner', path: '/student-corner' },
-    { name: 'About', path: '/about' },
+    { name: t('nav.home'), path: '/' },
+    { name: t('nav.explore'), path: '/explore' },
+    { name: t('nav.categories'), path: '/categories' },
+    { name: t('nav.timeline'), path: '/timeline' },
+    { name: t('nav.thenVsNow'), path: '/then-vs-now' },
+    { name: t('nav.studentCorner'), path: '/student-corner' },
+    { name: t('nav.about'), path: '/about' },
   ];
 
   const isActive = (path) => {
@@ -40,7 +43,7 @@ const Navbar = () => {
                   SmritiGhar
                 </span>
                 <span className="text-[11px] font-sans tracking-widest text-parchment-dark uppercase">
-                  Museum of Forgotten Things
+                  {t('footer.tagline')}
                 </span>
               </div>
             </Link>
@@ -51,7 +54,7 @@ const Navbar = () => {
                 const active = isActive(link.path);
                 return (
                   <Link
-                    key={link.name}
+                    key={link.path}
                     to={link.path}
                     className={`px-3.5 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                       active
@@ -67,6 +70,9 @@ const Navbar = () => {
 
             {/* RIGHT ACTION BUTTONS */}
             <div className="hidden lg:flex items-center gap-3">
+              {/* LANGUAGE SWITCHER */}
+              <LanguageSwitcher />
+
               <button
                 onClick={() => setIsSearchOpen(true)}
                 className="p-2.5 rounded-lg bg-wood-dark/60 text-parchment hover:text-amber-gold border border-amber-gold/20 hover:border-amber-gold/50 transition-all cursor-pointer"
@@ -80,12 +86,14 @@ const Navbar = () => {
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-amber-goldDark via-amber-gold to-amber-goldLight text-museum-950 font-semibold text-sm shadow-gold-glow hover:opacity-95 transition-opacity"
               >
                 <Sparkles className="w-4 h-4 text-museum-950" />
-                <span>Explore Museum</span>
+                <span>{t('nav.exploreMuseum')}</span>
               </Link>
             </div>
 
             {/* MOBILE MENU TOGGLE */}
             <div className="flex lg:hidden items-center gap-2">
+              <LanguageSwitcher />
+
               <button
                 onClick={() => setIsSearchOpen(true)}
                 className="p-2 rounded-lg bg-wood-dark/60 text-parchment hover:text-amber-gold border border-amber-gold/20"
@@ -107,7 +115,7 @@ const Navbar = () => {
           <div className="lg:hidden bg-museum-900 border-b border-amber-gold/30 px-4 pt-2 pb-6 space-y-2 animate-fadeIn">
             {navLinks.map((link) => (
               <Link
-                key={link.name}
+                key={link.path}
                 to={link.path}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
@@ -126,7 +134,7 @@ const Navbar = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full text-center py-3 rounded-lg bg-amber-gold text-museum-950 font-semibold shadow-gold-glow"
               >
-                Explore Museum Catalogue
+                {t('nav.exploreMuseum')}
               </Link>
             </div>
           </div>

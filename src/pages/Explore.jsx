@@ -1,11 +1,13 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Filter, SlidersHorizontal, Layers, Clock, RotateCcw } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Search, RotateCcw, Layers } from 'lucide-react';
 import { objects } from '../data/objects';
 import { categories } from '../data/categories';
 import { eras } from '../data/eras';
 import ObjectCard from '../components/ObjectCard';
 
 const Explore = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedEra, setSelectedEra] = useState('all');
@@ -59,10 +61,10 @@ const Explore = () => {
           Digital Catalogue & Archives
         </span>
         <h1 className="font-serif text-4xl sm:text-5xl font-extrabold text-cream">
-          Explore the Museum
+          {t('hero.exploreBtn')}
         </h1>
         <p className="text-parchment-dark text-base sm:text-lg leading-relaxed">
-          Discover objects from different generations and understand how people once lived, worked, studied and communicated.
+          {t('hero.subtitle')}
         </p>
       </div>
 
@@ -75,7 +77,7 @@ const Explore = () => {
             <Search className="w-5 h-5 text-amber-gold absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search object name..."
+              placeholder={t('nav.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-museum-950 text-cream placeholder-parchment-dark/50 pl-11 pr-4 py-2.5 rounded-xl border border-amber-gold/30 focus:border-amber-gold focus:outline-none text-sm font-sans"

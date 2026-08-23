@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Clock, Calendar, Sparkles, ArrowRight, Bookmark } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { Clock, Calendar, Sparkles } from 'lucide-react';
 import { eras } from '../data/eras';
 import { objects } from '../data/objects';
 import ObjectCard from '../components/ObjectCard';
 
 const Timeline = () => {
+  const { t } = useTranslation();
   const [activeEraId, setActiveEraId] = useState('all');
 
   const filteredEras = activeEraId === 'all'
@@ -21,10 +23,10 @@ const Timeline = () => {
           <span>Chronological Knowledge Archive</span>
         </span>
         <h1 className="font-serif text-4xl sm:text-5xl font-extrabold text-cream">
-          Journey Through Time
+          {t('nav.timeline')}
         </h1>
         <p className="text-parchment-dark text-base sm:text-lg leading-relaxed">
-          Discover how everyday objects and technological inventions evolved across generations, from hand-cranked mechanical devices to the digital revolution.
+          {t('hero.subtitle')}
         </p>
       </div>
 
@@ -61,7 +63,7 @@ const Timeline = () => {
         {/* Vertical Timeline Guide Line */}
         <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-amber-gold/10 via-amber-gold/40 to-amber-gold/10 -translate-x-1/2 pointer-events-none"></div>
 
-        {filteredEras.map((era, index) => {
+        {filteredEras.map((era) => {
           // Get objects belonging to this era
           const eraObjects = objects.filter((o) => o.era.toLowerCase() === era.name.toLowerCase());
 

@@ -1,8 +1,11 @@
 import React from 'react';
-import { ArrowRightLeft, Sparkles, CheckCircle, HelpCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { ArrowRightLeft, CheckCircle, HelpCircle } from 'lucide-react';
 import { comparisons } from '../data/comparisons';
 
 const ThenVsNow = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
       
@@ -13,10 +16,10 @@ const ThenVsNow = () => {
           <span>Generational Technology Comparison</span>
         </span>
         <h1 className="font-serif text-4xl sm:text-5xl font-extrabold text-cream">
-          Then vs Now
+          {t('thenVsNow.title')}
         </h1>
         <p className="text-parchment-dark text-base sm:text-lg leading-relaxed">
-          See how everyday technology has evolved over the decades—comparing vintage tools of previous generations directly with modern equivalents.
+          {t('thenVsNow.subtitle')}
         </p>
       </div>
 
@@ -46,7 +49,7 @@ const ThenVsNow = () => {
               <div className="bg-museum-950/80 p-5 rounded-2xl border border-amber-gold/20 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="px-3 py-1 rounded-md bg-wood-dark border border-amber-gold/40 text-amber-gold font-serif text-sm font-bold">
-                    THEN (Past Generation)
+                    {t('thenVsNow.thenLabel')}
                   </span>
                   <span className="text-xs text-parchment-dark">{item.oldName}</span>
                 </div>
@@ -68,7 +71,7 @@ const ThenVsNow = () => {
               <div className="bg-museum-950/80 p-5 rounded-2xl border border-emerald-500/30 space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="px-3 py-1 rounded-md bg-emerald-950 border border-emerald-500/40 text-emerald-300 font-sans text-xs font-bold">
-                    NOW (Modern Generation)
+                    {t('thenVsNow.nowLabel')}
                   </span>
                   <span className="text-xs text-emerald-400">{item.newName}</span>
                 </div>
@@ -93,7 +96,7 @@ const ThenVsNow = () => {
               <div className="p-4 rounded-xl bg-wood-dark border border-amber-gold/20 space-y-1">
                 <div className="flex items-center gap-2 text-amber-gold text-xs font-bold uppercase tracking-wider">
                   <HelpCircle className="w-3.5 h-3.5" />
-                  <span>What Changed?</span>
+                  <span>{t('thenVsNow.whatChanged')}</span>
                 </div>
                 <p className="text-xs text-cream/90 leading-relaxed">
                   {item.whatChanged}
@@ -103,7 +106,7 @@ const ThenVsNow = () => {
               <div className="p-4 rounded-xl bg-wood-dark border border-emerald-500/30 space-y-1">
                 <div className="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase tracking-wider">
                   <CheckCircle className="w-3.5 h-3.5" />
-                  <span>Why Was New Technology Better?</span>
+                  <span>{t('thenVsNow.whyBetter')}</span>
                 </div>
                 <p className="text-xs text-cream/90 leading-relaxed">
                   {item.whyBetter}
