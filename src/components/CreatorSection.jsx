@@ -46,7 +46,7 @@ const CreatorSection = () => {
 
           <div className="pt-2">
             <a
-              href="ani2025-git.github.io"
+              href="https://ani2025-git.github.io/my-portfolio/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-amber-goldDark via-amber-gold to-amber-goldLight text-museum-950 font-bold text-sm shadow-gold-glow hover:scale-105 transition-all cursor-pointer"
