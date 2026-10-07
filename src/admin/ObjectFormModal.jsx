@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { X, Save, Plus, Edit2, Image, Layers, Clock } from 'lucide-react';
 import { categories } from '../data/categories';
 import { eras } from '../data/eras';
 
-const ObjectFormModal = ({ isOpen, onClose, onSave, editingObject }) => {
-  const [formData, setFormData] = useState({
+const getInitialFormData = (object) => {
+  if (object) {
+    return {
+      ...object,
+      facts: Array.isArray(object.facts) ? object.facts.join('\n') : object.facts || '',
+      quickNotes: Array.isArray(object.quickNotes) ? object.quickNotes.join('\n') : object.quickNotes || '',
+    };
+  }
+  return {
     name: '',
     shortDescription: '',
     whatIsIt: '',
@@ -23,38 +30,17 @@ const ObjectFormModal = ({ isOpen, onClose, onSave, editingObject }) => {
     image: 'https://images.unsplash.com/photo-1520923642038-b4259acecbd7?auto=format&fit=crop&w=800&q=80',
     featured: false,
     status: 'Published'
-  });
+  };
+};
 
-  useEffect(() => {
-    if (editingObject) {
-      setFormData({
-        ...editingObject,
-        facts: Array.isArray(editingObject.facts) ? editingObject.facts.join('\n') : editingObject.facts || '',
-        quickNotes: Array.isArray(editingObject.quickNotes) ? editingObject.quickNotes.join('\n') : editingObject.quickNotes || '',
-      });
-    } else {
-      setFormData({
-        name: '',
-        shortDescription: '',
-        whatIsIt: '',
-        history: '',
-        howItWorked: '',
-        whereUsed: '',
-        importance: '',
-        facts: '',
-        quickNotes: '',
-        category: 'Communication',
-        era: '1950s',
-        year: '1950–1980',
-        origin: 'Various Countries',
-        inventor: 'Historical Inventor',
-        modernEquivalent: 'Smartphone',
-        image: 'https://images.unsplash.com/photo-1520923642038-b4259acecbd7?auto=format&fit=crop&w=800&q=80',
-        featured: false,
-        status: 'Published'
-      });
-    }
-  }, [editingObject, isOpen]);
+const ObjectFormModal = ({ isOpen, onClose, onSave, editingObject }) => {
+  const [formData, setFormData] = useState(() => getInitialFormData(editingObject));
+  const [prevEditingObject, setPrevEditingObject] = useState(editingObject);
+
+  if (editingObject !== prevEditingObject) {
+    setPrevEditingObject(editingObject);
+    setFormData(getInitialFormData(editingObject));
+  }
 
   if (!isOpen) return null;
 

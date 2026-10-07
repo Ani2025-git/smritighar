@@ -1,21 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, X, ArrowRight, Tag, Clock } from 'lucide-react';
 import { objects } from '../data/objects';
 
 const SearchBarModal = ({ isOpen, onClose }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredResults, setFilteredResults] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const filteredResults = useMemo(() => {
     if (!searchTerm.trim()) {
-      setFilteredResults([]);
-      return;
+      return [];
     }
 
     const query = searchTerm.toLowerCase();
-    const results = objects.filter((obj) => {
+    return objects.filter((obj) => {
       return (
         obj.name.toLowerCase().includes(query) ||
         obj.category.toLowerCase().includes(query) ||
@@ -24,9 +22,21 @@ const SearchBarModal = ({ isOpen, onClose }) => {
         obj.whatIsIt.toLowerCase().includes(query)
       );
     });
-
-    setFilteredResults(results);
   }, [searchTerm]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -41,9 +51,12 @@ const SearchBarModal = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 px-4 bg-museum-950/80 backdrop-blur-md animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-start justify-center pt-16 px-4 bg-museum-950/80 backdrop-blur-md animate-fadeIn cursor-pointer"
+      onClick={onClose}
+    >
       <div 
-        className="w-full max-w-2xl bg-museum-900 border border-amber-gold/40 rounded-2xl shadow-museum overflow-hidden relative"
+        className="w-full max-w-2xl bg-museum-900 border border-amber-gold/40 rounded-2xl shadow-museum overflow-hidden relative cursor-default"
         onClick={(e) => e.stopPropagation()}
       >
         {/* HEADER INPUT */}
