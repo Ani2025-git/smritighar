@@ -2,16 +2,32 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { objects as defaultObjects } from '../data/objects';
 
 const MuseumDataContext = createContext();
-const STORAGE_KEY = 'smritighar_catalog_v1';
+const STORAGE_KEY = 'smritighar_catalog_v2';
 
 export const MuseumDataProvider = ({ children }) => {
   const [objects, setObjects] = useState(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
+      let saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) {
+        const v1 = localStorage.getItem('smritighar_catalog_v1');
+        if (v1) {
+          saved = v1;
+          localStorage.removeItem('smritighar_catalog_v1');
+        }
+      }
       if (saved) {
         const parsed = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
+          // Auto-heal broken Unsplash image URL if present in cached data
+          return parsed.map((item) => {
+            if (item.image && item.image.includes('photo-1546707012-0c9f63bcd297')) {
+              return {
+                ...item,
+                image: 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=1000&q=80'
+              };
+            }
+            return item;
+          });
         }
       }
     } catch (e) {

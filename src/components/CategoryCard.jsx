@@ -17,6 +17,10 @@ const CategoryCard = ({ category }) => {
           alt={displayName}
           className="w-full h-full object-cover sepia-hover opacity-90 group-hover:opacity-100"
           loading="lazy"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=800&q=80';
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-wood-dark via-transparent to-transparent"></div>
         <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded-md bg-museum-950/80 border border-amber-gold/30 text-amber-gold font-sans text-xs flex items-center gap-1.5">

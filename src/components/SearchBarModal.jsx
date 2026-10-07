@@ -111,6 +111,10 @@ const SearchBarModal = ({ isOpen, onClose }) => {
                         src={obj.image}
                         alt={displayName}
                         className="w-14 h-14 object-cover rounded-lg border border-amber-gold/30 group-hover:border-amber-gold transition-colors"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=800&q=80';
+                        }}
                       />
                       <div>
                         <h4 className="font-serif text-lg font-semibold text-cream group-hover:text-amber-goldLight transition-colors">

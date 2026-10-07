@@ -143,6 +143,10 @@ const ObjectDetails = () => {
             src={object.image}
             alt={displayName}
             className="w-full h-full object-cover sepia-hover"
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=1000&q=80';
+            }}
           />
           <div className="absolute top-3 left-3 px-3 py-1 rounded-lg bg-museum-950/90 border border-amber-gold/40 text-amber-gold text-xs font-bold flex items-center gap-1">
             <Clock className="w-3.5 h-3.5" />

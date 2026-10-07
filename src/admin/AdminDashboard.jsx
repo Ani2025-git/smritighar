@@ -348,6 +348,10 @@ const AdminDashboard = ({
                             src={obj.image}
                             alt={obj.name}
                             className="w-9 h-9 object-cover rounded-lg border border-amber-gold/30"
+                            onError={(e) => {
+                              e.currentTarget.onerror = null;
+                              e.currentTarget.src = 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=800&q=80';
+                            }}
                           />
                           <div>
                             <span className="font-semibold block text-cream">{tObjectName(obj.name)}</span>
@@ -465,6 +469,10 @@ const AdminDashboard = ({
                           src={obj.image}
                           alt={obj.name}
                           className="w-10 h-10 object-cover rounded-lg border border-amber-gold/30"
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=800&q=80';
+                          }}
                         />
                         <div>
                           <span className="font-semibold block text-cream">{tObjectName(obj.name)}</span>
@@ -551,6 +559,10 @@ const AdminDashboard = ({
                         src={cat.image}
                         alt={cat.name}
                         className="w-full h-full object-cover sepia-[0.2] group-hover:scale-105 transition-transform duration-300"
+                        onError={(e) => {
+                          e.currentTarget.onerror = null;
+                          e.currentTarget.src = 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=800&q=80';
+                        }}
                       />
                       <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-wood-dark/90 text-amber-gold text-xs font-bold border border-amber-gold/30">
                         {count} Items

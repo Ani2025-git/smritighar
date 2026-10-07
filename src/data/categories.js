@@ -41,7 +41,7 @@ export const categories = [
     name: "Entertainment",
     iconName: "Music",
     count: 3,
-    image: "https://images.unsplash.com/photo-1546707012-0c9f63bcd297?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=800&q=80",
     description: "Acoustic gramophones, cassette walkmans, vinyl record players, and personal portable audio equipment."
   },
   {

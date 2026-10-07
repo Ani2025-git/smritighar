@@ -63,6 +63,10 @@ const ThenVsNow = () => {
                     src={item.oldImage}
                     alt={item.oldName}
                     className="w-full h-full object-cover sepia-[0.3]"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=800&q=80';
+                    }}
                   />
                 </div>
 
@@ -85,6 +89,10 @@ const ThenVsNow = () => {
                     src={item.newImage}
                     alt={item.newName}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80';
+                    }}
                   />
                 </div>
 

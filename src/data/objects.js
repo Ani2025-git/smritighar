@@ -41,7 +41,7 @@ export const objects = [
     origin: "Germany / United States",
     inventor: "Emile Berliner",
     modernEquivalent: "Music Streaming Apps (Spotify / Apple Music)",
-    image: "https://images.unsplash.com/photo-1546707012-0c9f63bcd297?auto=format&fit=crop&w=1000&q=80",
+    image: "https://images.unsplash.com/photo-1542208998-f6dbbb27a72f?auto=format&fit=crop&w=1000&q=80",
     featured: true,
     shortDescription: "An acoustic record player with a iconic brass horn that played music recorded on flat shellac discs.",
     whatIsIt: "The gramophone was the earliest mechanical music player to use flat circular vinyl/shellac discs rather than wax cylinders. It featured a hand-cranked spring motor, a sensitive steel needle cartridge, and a large metal amplifying horn.",
