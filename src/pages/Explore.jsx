@@ -1,13 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { useTranslation } from '../context/LanguageContext';
+import { useMuseumData } from '../context/MuseumDataContext';
 import { Search, RotateCcw, Layers } from 'lucide-react';
-import { objects } from '../data/objects';
 import { categories } from '../data/categories';
 import { eras } from '../data/eras';
 import ObjectCard from '../components/ObjectCard';
 
 const Explore = () => {
-  const { t } = useTranslation();
+  const { t, tCategory, tObjectName } = useTranslation();
+  const { objects } = useMuseumData();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedEra, setSelectedEra] = useState('all');
@@ -15,14 +16,21 @@ const Explore = () => {
 
   // FILTER & SORT LOGIC
   const filteredObjects = useMemo(() => {
+    const query = searchTerm.toLowerCase().trim();
     return objects
       .filter((obj) => {
-        // Search term
+        const translatedName = tObjectName(obj.name).toLowerCase();
+        const translatedCat = tCategory(obj.category).toLowerCase();
+
+        // Search term matching in original and translated text
         const matchesSearch =
-          !searchTerm ||
-          obj.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          obj.shortDescription.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          obj.whatIsIt.toLowerCase().includes(searchTerm.toLowerCase());
+          !query ||
+          obj.name.toLowerCase().includes(query) ||
+          translatedName.includes(query) ||
+          obj.category.toLowerCase().includes(query) ||
+          translatedCat.includes(query) ||
+          obj.shortDescription.toLowerCase().includes(query) ||
+          obj.whatIsIt.toLowerCase().includes(query);
 
         // Category
         const matchesCategory =
@@ -37,13 +45,15 @@ const Explore = () => {
         return matchesSearch && matchesCategory && matchesEra;
       })
       .sort((a, b) => {
-        if (sortBy === 'a-z') return a.name.localeCompare(b.name);
-        if (sortBy === 'z-a') return b.name.localeCompare(a.name);
+        const nameA = tObjectName(a.name);
+        const nameB = tObjectName(b.name);
+        if (sortBy === 'a-z') return nameA.localeCompare(nameB);
+        if (sortBy === 'z-a') return nameB.localeCompare(nameA);
         if (sortBy === 'oldest') return a.id - b.id;
         if (sortBy === 'newest') return b.id - a.id;
         return 0;
       });
-  }, [searchTerm, selectedCategory, selectedEra, sortBy]);
+  }, [searchTerm, selectedCategory, selectedEra, sortBy, tCategory, tObjectName]);
 
   const handleResetFilters = () => {
     setSearchTerm('');
@@ -77,7 +87,7 @@ const Explore = () => {
             <Search className="w-5 h-5 text-amber-gold absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder={t('nav.searchPlaceholder')}
+              placeholder={t('nav.searchPlaceholder') || "Search telephone, radio, camera..."}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full bg-museum-950 text-cream placeholder-parchment-dark/50 pl-11 pr-4 py-2.5 rounded-xl border border-amber-gold/30 focus:border-amber-gold focus:outline-none text-sm font-sans"
@@ -94,7 +104,7 @@ const Explore = () => {
               <option value="all">All Categories ({categories.length})</option>
               {categories.map((cat) => (
                 <option key={cat.id} value={cat.name}>
-                  {cat.name}
+                  {tCategory(cat.name)}
                 </option>
               ))}
             </select>

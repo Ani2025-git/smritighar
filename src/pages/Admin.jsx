@@ -1,22 +1,32 @@
 import React, { useState } from 'react';
 import AdminLogin from '../admin/AdminLogin';
 import AdminDashboard from '../admin/AdminDashboard';
-import { objects as initialObjects } from '../data/objects';
+import { useMuseumData } from '../context/MuseumDataContext';
 
 const Admin = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [objectList, setObjectList] = useState(initialObjects);
+  const [isLoggedIn, setIsLoggedIn] = useState(() => {
+    return localStorage.getItem('smritighar_admin_logged') === 'true';
+  });
+  
+  const { 
+    objects, 
+    addObject, 
+    updateObject, 
+    deleteObject, 
+    toggleFeatured, 
+    resetToDefaults, 
+    exportCatalogJson, 
+    importCatalogJson 
+  } = useMuseumData();
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
+    localStorage.setItem('smritighar_admin_logged', 'true');
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-  };
-
-  const handleUpdateObjects = (newObjects) => {
-    setObjectList(newObjects);
+    localStorage.removeItem('smritighar_admin_logged');
   };
 
   return (
@@ -25,8 +35,14 @@ const Admin = () => {
         <AdminLogin onLoginSuccess={handleLoginSuccess} />
       ) : (
         <AdminDashboard
-          objectList={objectList}
-          onUpdateObjects={handleUpdateObjects}
+          objectList={objects}
+          onAddObject={addObject}
+          onUpdateObject={updateObject}
+          onDeleteObject={deleteObject}
+          onToggleFeatured={toggleFeatured}
+          onResetDefaults={resetToDefaults}
+          onExportCatalog={exportCatalogJson}
+          onImportCatalog={importCatalogJson}
           onLogout={handleLogout}
         />
       )}

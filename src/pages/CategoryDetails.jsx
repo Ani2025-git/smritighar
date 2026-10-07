@@ -1,12 +1,15 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Layers, Compass } from 'lucide-react';
+import { useTranslation } from '../context/LanguageContext';
+import { useMuseumData } from '../context/MuseumDataContext';
 import { categories } from '../data/categories';
-import { objects } from '../data/objects';
 import ObjectCard from '../components/ObjectCard';
 
 const CategoryDetails = () => {
   const { slug } = useParams();
+  const { t, tCategory } = useTranslation();
+  const { objects } = useMuseumData();
   const category = categories.find((c) => c.slug === slug);
 
   // Filter objects belonging to this category
@@ -30,6 +33,8 @@ const CategoryDetails = () => {
     );
   }
 
+  const displayName = tCategory(category.name);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
       
@@ -37,10 +42,10 @@ const CategoryDetails = () => {
       <div className="flex items-center gap-2 text-xs text-parchment-dark">
         <Link to="/categories" className="hover:text-amber-gold transition-colors flex items-center gap-1">
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Categories</span>
+          <span>{t('nav.categories')}</span>
         </Link>
         <span>/</span>
-        <span className="text-amber-gold font-medium">{category.name}</span>
+        <span className="text-amber-gold font-medium">{displayName}</span>
       </div>
 
       {/* CATEGORY BANNER */}
@@ -52,7 +57,7 @@ const CategoryDetails = () => {
             <span>Exhibition Hall</span>
           </div>
           <h1 className="font-serif text-4xl sm:text-6xl font-extrabold text-cream">
-            {category.name}
+            {displayName}
           </h1>
           <p className="text-parchment text-base sm:text-lg leading-relaxed">
             {category.description}

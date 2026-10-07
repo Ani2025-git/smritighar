@@ -18,8 +18,10 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
+    supportedLngs: ['en', 'bn', 'hi'],
     detection: {
       order: ['localStorage', 'navigator'],
+      lookupLocalStorage: 'smritighar_lang',
       caches: ['localStorage'],
     },
     interpolation: {

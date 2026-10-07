@@ -4,26 +4,9 @@ import { useTranslation } from '../context/LanguageContext';
 import { Clock, ArrowRight } from 'lucide-react';
 
 const ObjectCard = ({ object }) => {
-  const { t, i18n } = useTranslation();
+  const { t, tCategory, tObjectName } = useTranslation();
 
-  // Helper key translation for object names
-  const getTranslatedName = (name) => {
-    if (name.includes('Telephone')) return t('objectNames.rotaryTelephone');
-    if (name.includes('Gramophone')) return t('objectNames.gramophone');
-    if (name.includes('Radio')) return t('objectNames.vintageRadio');
-    if (name.includes('Typewriter')) return t('objectNames.typewriter');
-    if (name.includes('Camera')) return t('objectNames.filmCamera');
-    if (name.includes('Cassette')) return t('objectNames.cassettePlayer');
-    if (name.includes('Television') || name.includes('TV')) return t('objectNames.bwTv');
-    if (name.includes('Lantern')) return t('objectNames.lantern');
-    if (name.includes('Floppy')) return t('objectNames.floppyDisk');
-    if (name.includes('Postcard') || name.includes('Letter')) return t('objectNames.postcard');
-    if (name.includes('Coin')) return t('objectNames.oldCoins');
-    if (name.includes('Slate')) return t('objectNames.schoolSlate');
-    return name;
-  };
-
-  const displayName = i18n.language !== 'en' ? getTranslatedName(object.name) : object.name;
+  const displayName = tObjectName(object.name);
 
   return (
     <div className="bg-wood-dark/60 rounded-xl overflow-hidden border border-amber-gold/25 shadow-museum hover:border-amber-gold/80 hover:shadow-gold-glow transition-all duration-300 flex flex-col group h-full">
@@ -44,7 +27,7 @@ const ObjectCard = ({ object }) => {
 
         {/* CATEGORY BADGE */}
         <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-wood-dark/85 backdrop-blur-md border border-amber-gold/20 text-cream/90 font-sans text-xs">
-          {object.category}
+          {tCategory(object.category)}
         </div>
       </div>
 

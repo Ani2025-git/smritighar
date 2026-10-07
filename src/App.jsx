@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
+import { MuseumDataProvider } from './context/MuseumDataContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -41,25 +42,27 @@ const Layout = ({ children }) => {
 function App() {
   return (
     <LanguageProvider>
-      <Router>
-        <ScrollToTop />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path="/categories" element={<Categories />} />
-            <Route path="/category/:slug" element={<CategoryDetails />} />
-            <Route path="/timeline" element={<Timeline />} />
-            <Route path="/timeline/:era" element={<Timeline />} />
-            <Route path="/object/:slug" element={<ObjectDetails />} />
-            <Route path="/then-vs-now" element={<ThenVsNow />} />
-            <Route path="/student-corner" element={<StudentCorner />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<Home />} />
-          </Routes>
-        </Layout>
-      </Router>
+      <MuseumDataProvider>
+        <Router>
+          <ScrollToTop />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/explore" element={<Explore />} />
+              <Route path="/categories" element={<Categories />} />
+              <Route path="/category/:slug" element={<CategoryDetails />} />
+              <Route path="/timeline" element={<Timeline />} />
+              <Route path="/timeline/:era" element={<Timeline />} />
+              <Route path="/object/:slug" element={<ObjectDetails />} />
+              <Route path="/then-vs-now" element={<ThenVsNow />} />
+              <Route path="/student-corner" element={<StudentCorner />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </MuseumDataProvider>
     </LanguageProvider>
   );
 }

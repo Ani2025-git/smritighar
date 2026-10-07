@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '../context/LanguageContext';
+import { useMuseumData } from '../context/MuseumDataContext';
 import { Sparkles, Clock, Compass, BookOpen, ArrowRight, Award } from 'lucide-react';
-import { objects } from '../data/objects';
 import { categories } from '../data/categories';
 import ObjectCard from '../components/ObjectCard';
 import CategoryCard from '../components/CategoryCard';
@@ -10,6 +10,7 @@ import CreatorSection from '../components/CreatorSection';
 
 const Home = () => {
   const { t } = useTranslation();
+  const { objects } = useMuseumData();
 
   // Get featured categories (top 6 requested)
   const featuredCategorySlugs = ['communication', 'technology', 'home-living', 'photography', 'education', 'entertainment'];

@@ -4,23 +4,9 @@ import { useTranslation } from '../context/LanguageContext';
 import { ArrowRight, Layers } from 'lucide-react';
 
 const CategoryCard = ({ category }) => {
-  const { t, i18n } = useTranslation();
+  const { t, tCategory } = useTranslation();
 
-  const getTranslatedCategoryName = (name) => {
-    if (name === 'Communication') return t('categories.communication');
-    if (name === 'Technology') return t('categories.technology');
-    if (name === 'Home & Living') return t('categories.homeLiving');
-    if (name === 'Education') return t('categories.education');
-    if (name === 'Entertainment') return t('categories.entertainment');
-    if (name === 'Photography') return t('categories.photography');
-    if (name === 'Transport') return t('categories.transport');
-    if (name === 'Money & Currency') return t('categories.moneyCurrency');
-    if (name === 'Agriculture & Village Life') return t('categories.agricultureVillage');
-    if (name === 'Tools & Equipment') return t('categories.toolsEquipment');
-    return name;
-  };
-
-  const displayName = i18n.language !== 'en' ? getTranslatedCategoryName(category.name) : category.name;
+  const displayName = tCategory(category.name);
 
   return (
     <div className="bg-wood-dark/70 rounded-xl overflow-hidden border border-amber-gold/20 hover:border-amber-gold/60 shadow-museum hover:shadow-gold-glow transition-all duration-300 flex flex-col group h-full">

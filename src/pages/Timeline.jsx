@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useTranslation } from '../context/LanguageContext';
+import { useMuseumData } from '../context/MuseumDataContext';
 import { Clock, Calendar, Sparkles } from 'lucide-react';
 import { eras } from '../data/eras';
-import { objects } from '../data/objects';
 import ObjectCard from '../components/ObjectCard';
 
 const Timeline = () => {
   const { t } = useTranslation();
+  const { objects } = useMuseumData();
   const [activeEraId, setActiveEraId] = useState('all');
 
   const filteredEras = activeEraId === 'all'

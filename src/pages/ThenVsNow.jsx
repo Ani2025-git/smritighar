@@ -4,7 +4,7 @@ import { ArrowRightLeft, CheckCircle, HelpCircle } from 'lucide-react';
 import { comparisons } from '../data/comparisons';
 
 const ThenVsNow = () => {
-  const { t } = useTranslation();
+  const { t, tCategory, tObjectName } = useTranslation();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
@@ -25,34 +25,38 @@ const ThenVsNow = () => {
 
       {/* COMPARISON CARDS GRID */}
       <div className="space-y-12">
-        {comparisons.map((item) => (
-          <div
-            key={item.id}
-            className="bg-wood-dark/70 rounded-3xl overflow-hidden border border-amber-gold/30 shadow-museum p-6 sm:p-8 space-y-6"
-          >
-            {/* CARD TITLE & CATEGORY */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-gold/20 pb-4 gap-2">
-              <div className="flex items-center gap-3">
-                <h2 className="font-serif text-2xl sm:text-3xl font-bold text-cream">
-                  {item.oldName} <span className="text-amber-gold font-sans font-normal text-xl px-2">vs</span> {item.newName}
-                </h2>
-              </div>
-              <span className="self-start sm:self-auto px-3 py-1 rounded-full bg-museum-950 border border-amber-gold/30 text-amber-gold text-xs font-semibold">
-                {item.category}
-              </span>
-            </div>
+        {comparisons.map((item) => {
+          const oldDisplayName = tObjectName(item.oldName) || item.oldName;
+          const categoryDisplayName = tCategory(item.category) || item.category;
 
-            {/* SIDE BY SIDE IMAGES AND DESCRIPTIONS */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              
-              {/* THEN (OLD OBJECT) */}
-              <div className="bg-museum-950/80 p-5 rounded-2xl border border-amber-gold/20 space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-md bg-wood-dark border border-amber-gold/40 text-amber-gold font-serif text-sm font-bold">
-                    {t('thenVsNow.thenLabel')}
-                  </span>
-                  <span className="text-xs text-parchment-dark">{item.oldName}</span>
+          return (
+            <div
+              key={item.id}
+              className="bg-wood-dark/70 rounded-3xl overflow-hidden border border-amber-gold/30 shadow-museum p-6 sm:p-8 space-y-6"
+            >
+              {/* CARD TITLE & CATEGORY */}
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-amber-gold/20 pb-4 gap-2">
+                <div className="flex items-center gap-3">
+                  <h2 className="font-serif text-2xl sm:text-3xl font-bold text-cream">
+                    {oldDisplayName} <span className="text-amber-gold font-sans font-normal text-xl px-2">vs</span> {item.newName}
+                  </h2>
                 </div>
+                <span className="self-start sm:self-auto px-3 py-1 rounded-full bg-museum-950 border border-amber-gold/30 text-amber-gold text-xs font-semibold">
+                  {categoryDisplayName}
+                </span>
+              </div>
+
+              {/* SIDE BY SIDE IMAGES AND DESCRIPTIONS */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                {/* THEN (OLD OBJECT) */}
+                <div className="bg-museum-950/80 p-5 rounded-2xl border border-amber-gold/20 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="px-3 py-1 rounded-md bg-wood-dark border border-amber-gold/40 text-amber-gold font-serif text-sm font-bold">
+                      {t('thenVsNow.thenLabel')}
+                    </span>
+                    <span className="text-xs text-parchment-dark">{oldDisplayName}</span>
+                  </div>
 
                 <div className="aspect-[16/9] rounded-xl overflow-hidden border border-amber-gold/30">
                   <img
@@ -115,8 +119,9 @@ const ThenVsNow = () => {
             </div>
 
           </div>
-        ))}
-      </div>
+        );
+      })}
+    </div>
 
     </div>
   );
